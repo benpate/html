@@ -1,4 +1,4 @@
-package builder
+package html
 
 // Class adds a "class" attribute to the Element
 func (element *Element) Class(value string) *Element {

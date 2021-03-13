@@ -1,4 +1,4 @@
-package builder
+package html
 
 import (
 	"testing"

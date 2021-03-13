@@ -1,17 +1,17 @@
-# builder 🚧
+# html 🚧
 
-[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://pkg.go.dev/github.com/benpate/builder)
-[![Go Report Card](https://goreportcard.com/badge/github.com/benpate/builder?style=flat-square)](https://goreportcard.com/report/github.com/benpate/builder)
-[![Build Status](http://img.shields.io/travis/benpate/builder.svg?style=flat-square)](https://travis-ci.com/benpate/builder)
-[![Codecov](https://img.shields.io/codecov/c/github/benpate/builder.svg?style=flat-square)](https://codecov.io/gh/benpate/builder)
-![Version](https://img.shields.io/github/v/release/benpate/builder?include_prereleases&style=flat-square&color=brightgreen)
+[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://pkg.go.dev/github.com/benpate/html)
+[![Go Report Card](https://goreportcard.com/badge/github.com/benpate/html?style=flat-square)](https://goreportcard.com/report/github.com/benpate/html)
+[![Build Status](http://img.shields.io/travis/benpate/html.svg?style=flat-square)](https://travis-ci.com/benpate/html)
+[![Codecov](https://img.shields.io/codecov/c/github/benpate/html.svg?style=flat-square)](https://codecov.io/gh/benpate/html)
+![Version](https://img.shields.io/github/v/release/benpate/html?include_prereleases&style=flat-square&color=brightgreen)
 
 ## Efficient HTML Tag Assembly
 
-Builder is a simple library for assembling HTML tags using Go.  
+This is a simple library for assembling HTML tags using Go.  
 
 ```go
-b := builder.New()
+b := html.New()
 
 b.Div().Class("wrapper")
 b.Div().Class("inner")

@@ -1,4 +1,4 @@
-package builder
+package html
 
 func (b *Builder) BR() *Element {
 	return b.Empty("br")

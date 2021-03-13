@@ -1,4 +1,4 @@
-module github.com/benpate/builder
+module github.com/benpate/html
 
 go 1.15
 

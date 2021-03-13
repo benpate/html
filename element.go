@@ -1,4 +1,4 @@
-package htmlbuilder
+package builder
 
 import (
 	"html"

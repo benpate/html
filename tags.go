@@ -1,4 +1,4 @@
-package htmlbuilder
+package builder
 
 func (b *Builder) Div() *Element {
 	return b.Container("div")

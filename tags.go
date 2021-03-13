@@ -1,5 +1,9 @@
 package builder
 
+func (b *Builder) BR() *Element {
+	return b.Empty("br")
+}
+
 func (b *Builder) Div() *Element {
 	return b.Container("div")
 }

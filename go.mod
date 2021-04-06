@@ -3,6 +3,6 @@ module github.com/benpate/html
 go 1.15
 
 require (
-	github.com/benpate/convert v0.9.0
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/stretchr/testify v1.7.0
 )

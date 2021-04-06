@@ -2,8 +2,6 @@ package html
 
 import (
 	"html"
-
-	"github.com/benpate/convert"
 )
 
 // Element represents a element that is being written into the provided strings.Builder
@@ -38,7 +36,7 @@ func (element *Element) Start() *Element {
 // Attr writes the attribute into the string builder.  It converts
 // the value (second parameter) into a string, and then uses html.EscapeString
 // to escape the attribute value.  Attribute names ARE NOT escaped.
-func (element *Element) Attr(name string, value interface{}) *Element {
+func (element *Element) Attr(name string, value string) *Element {
 
 	// If the element already has an end bracket, then we can't add any more attributes.
 	if element.endBracket {
@@ -46,19 +44,19 @@ func (element *Element) Attr(name string, value interface{}) *Element {
 	}
 
 	// this *should* already be a string, but just in case
-	if valueString, _ := convert.StringOk(value, ""); valueString != "" {
+	if value != "" {
 
 		// escape the value
-		valueString = html.EscapeString(valueString)
+		value = html.EscapeString(value)
 
 		// length of: space + name + quote + escaped value + quote
-		element.builder.Grow(len(name) + len(valueString) + 4)
+		element.builder.Grow(len(name) + len(value) + 4)
 
 		// write values to the builder
 		element.builder.WriteRune(' ')
 		element.builder.WriteString(name)
 		element.builder.WriteString(`="`)
-		element.builder.WriteString(valueString)
+		element.builder.WriteString(value)
 		element.builder.WriteRune('"')
 	}
 

@@ -65,6 +65,10 @@ func (builder *Builder) Container(name string) *Element {
 // call .CloseAll() -- without affecting this current builder.
 func (builder *Builder) SubTree() *Builder {
 
+	// If we're beginning a sub-tree, then guarantee that the most recent tag has at
+	// least been ended properly.
+	builder.last.EndBracket()
+
 	return &Builder{
 		Builder: builder.Builder,
 	}
@@ -77,7 +81,7 @@ func (builder *Builder) Close() *Builder {
 		return builder
 	}
 
-	// Write the closing HTML to the buffe
+	// Write the closing HTML to the buffer
 	builder.last.Close()
 
 	return builder

@@ -15,6 +15,16 @@ func (element *Element) ID(value string) *Element {
 	return element.Attr("id", value)
 }
 
+// Label adds a "label" attribute to the Element
+func (element *Element) Label(value string) *Element {
+	return element.Attr("label", value)
+}
+
+// List adds a "list" attribute to the Element
+func (element *Element) List(value string) *Element {
+	return element.Attr("list", value)
+}
+
 // Name adds a "name" attribute to the Element
 func (element *Element) Name(value string) *Element {
 	return element.Attr("name", value)

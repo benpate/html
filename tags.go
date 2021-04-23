@@ -8,6 +8,10 @@ func (b *Builder) Button() *Element {
 	return b.Container("button")
 }
 
+func (b *Builder) Datalist(id string) *Element {
+	return b.Container("datalist").ID(id).EndBracket()
+}
+
 func (b *Builder) Div() *Element {
 	return b.Container("div")
 }
@@ -18,6 +22,18 @@ func (b *Builder) Input() *Element {
 
 func (b *Builder) Label(forID string) *Element {
 	return b.Container("label").For(forID)
+}
+
+func (b *Builder) OptGroup(label string) *Element {
+	return b.Container("optgroup").Label(label).EndBracket()
+}
+
+func (b *Builder) Option(name string, value string) *Element {
+	return b.Container("option").Name(name).InnerHTML(value).Close()
+}
+
+func (b *Builder) Select(name string) *Element {
+	return b.Container("select").Name(name)
 }
 
 func (b *Builder) Span() *Element {

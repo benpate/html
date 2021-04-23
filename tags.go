@@ -4,6 +4,10 @@ func (b *Builder) BR() *Element {
 	return b.Empty("br")
 }
 
+func (b *Builder) Button() *Element {
+	return b.Container("button")
+}
+
 func (b *Builder) Div() *Element {
 	return b.Container("div")
 }
@@ -18,4 +22,8 @@ func (b *Builder) Label(forID string) *Element {
 
 func (b *Builder) Span() *Element {
 	return b.Container("span")
+}
+
+func (b *Builder) Textarea() *Element {
+	return b.Container("textarea")
 }

@@ -1,5 +1,9 @@
 package html
 
+func (b *Builder) A(href string) *Element {
+	return b.Empty("a").Attr("href", href)
+}
+
 func (b *Builder) BR() *Element {
 	return b.Empty("br")
 }

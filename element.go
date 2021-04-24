@@ -73,7 +73,7 @@ func (element *Element) EndBracket() *Element {
 	}
 
 	// If this element is not a container, then this closes it permanently
-	if element.container == false {
+	if !element.container {
 		element.closed = true
 	}
 
@@ -96,15 +96,13 @@ func (element *Element) InnerHTML(innerHTML string) *Element {
 	// Only need to write additional content if innerHTML is not empty
 	if innerHTML != "" {
 
-		if element.endBracket == false {
-			element.builder.Grow(len(innerHTML) + 1)
+		if !element.endBracket {
 			element.builder.WriteRune('>')
 			element.endBracket = true
-		} else {
-			element.builder.Grow(len(innerHTML))
 		}
 
 		// Write innerHTML (if present)
+		element.builder.Grow(len(innerHTML))
 		element.builder.WriteString(innerHTML)
 	}
 

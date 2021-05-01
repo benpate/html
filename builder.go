@@ -13,7 +13,9 @@ type Builder struct {
 // New generates a fully initialized Builder
 func New() *Builder {
 	var builder strings.Builder
-	return &Builder{Builder: &builder}
+	return &Builder{
+		Builder: &builder,
+	}
 }
 
 // Element adds a new HTML element to the builder
@@ -31,7 +33,7 @@ func (builder *Builder) Element(name string, container bool) *Element {
 
 		// If the last element is NOT a container, then it should
 		// be closed and popped from the stack.
-		if builder.last.container == false {
+		if !builder.last.container {
 			builder.Close()
 		} else {
 			// If it IS a container, then it should at least

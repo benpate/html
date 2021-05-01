@@ -29,7 +29,7 @@ func TestDiv(t *testing.T) {
 func TestInput(t *testing.T) {
 
 	b := New()
-	div := b.Input().Attr("name", "FullName").Attr("value", "John Connor")
+	div := b.Input("text", "FullName").Attr("value", "John Connor")
 
 	require.Equal(t, div.name, "input")
 	require.False(t, div.container)
@@ -40,5 +40,5 @@ func TestInput(t *testing.T) {
 	require.True(t, div.endBracket)
 	require.True(t, div.closed)
 
-	require.Equal(t, `<input name="FullName" value="John Connor">`, b.String())
+	require.Equal(t, `<input type="text" name="FullName" value="John Connor">`, b.String())
 }

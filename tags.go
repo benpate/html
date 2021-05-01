@@ -20,8 +20,12 @@ func (b *Builder) Div() *Element {
 	return b.Container("div")
 }
 
-func (b *Builder) Input() *Element {
-	return b.Empty("input")
+func (b *Builder) Form(method string, action string) *Element {
+	return b.Container("form").Attr("method", method).Attr("action", action)
+}
+
+func (b *Builder) Input(t string, name string) *Element {
+	return b.Empty("input").Type(t).Name(name)
 }
 
 func (b *Builder) Label(forID string) *Element {
@@ -36,6 +40,10 @@ func (b *Builder) Option(name string, value string) *Element {
 	return b.Container("option").Name(name).InnerHTML(value).Close()
 }
 
+func (b *Builder) Script() *Element {
+	return b.Container("script")
+}
+
 func (b *Builder) Select(name string) *Element {
 	return b.Container("select").Name(name)
 }
@@ -44,6 +52,6 @@ func (b *Builder) Span() *Element {
 	return b.Container("span")
 }
 
-func (b *Builder) Textarea() *Element {
-	return b.Container("textarea")
+func (b *Builder) Textarea(name string) *Element {
+	return b.Container("textarea").Name(name)
 }

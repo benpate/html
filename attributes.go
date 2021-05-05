@@ -10,6 +10,11 @@ func (element *Element) For(value string) *Element {
 	return element.Attr("for", value)
 }
 
+// Data adds a "data-" attribute to the Element
+func (element *Element) Data(name string, value string) *Element {
+	return element.Attr("data-"+name, value)
+}
+
 // ID adds an "id" attribute to the Element
 func (element *Element) ID(value string) *Element {
 	return element.Attr("id", value)

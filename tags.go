@@ -24,6 +24,17 @@ func (b *Builder) Form(method string, action string) *Element {
 	return b.Container("form").Attr("method", method).Attr("action", action)
 }
 
+func (b *Builder) H1() *Element {
+	return b.Container("h1")
+}
+
+func (b *Builder) H2() *Element {
+	return b.Container("h2")
+}
+func (b *Builder) H3() *Element {
+	return b.Container("h3")
+}
+
 func (b *Builder) Input(t string, name string) *Element {
 	return b.Empty("input").Type(t).Name(name)
 }

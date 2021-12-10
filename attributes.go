@@ -1,8 +1,10 @@
 package html
 
+import "strings"
+
 // Class adds a "class" attribute to the Element
-func (element *Element) Class(value string) *Element {
-	return element.Attr("class", value)
+func (element *Element) Class(values ...string) *Element {
+	return element.Attr("class", strings.Join(values, " "))
 }
 
 // For adds a "for" attribute to the Element
@@ -38,6 +40,11 @@ func (element *Element) Name(value string) *Element {
 // Script adds a "data-script" attribute to the Element (hyperscript)
 func (element *Element) Script(value string) *Element {
 	return element.Attr("data-script", value)
+}
+
+// Script adds a "data-script" attribute to the Element (hyperscript)
+func (element *Element) Style(values ...string) *Element {
+	return element.Attr("style", strings.Join(values, "; "))
 }
 
 // Type adds a "type" attribute to the Element

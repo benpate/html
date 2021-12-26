@@ -26,7 +26,6 @@ b.String()
 
 Why not just use [Go Templates](https://golang.org/pkg/text/template/) instead?  Templates work great in many cases, but they can be cumbersome when building complex conditional logic directly in your code.  Builder uses an efficient [strings.Builder](https://pkg.go.dev/strings#Builder) to assemble the exact HTML you need, and nothing extra.
 
-
 ## Pull Requests Welcome
 
 This library is growing rapidly, as the requirements of its downstram projects continue to evolve.  How can it help you build your next masterpiece?  Add your voice, because we're all in this together! 🚧

@@ -1,6 +1,7 @@
 package html
 
 import (
+	"io"
 	"strings"
 )
 
@@ -76,6 +77,19 @@ func (builder *Builder) SubTree() *Builder {
 	}
 }
 
+// EndBracket adds an end bracket to the last tag on the stack
+func (builder *Builder) EndBracket() *Builder {
+
+	if builder.last == nil {
+		return builder
+	}
+
+	// Write the closing HTML to the buffer
+	builder.last.EndBracket()
+
+	return builder
+}
+
 // Close completes the last tag on the stack, then pops it off of the stack
 func (builder *Builder) Close() *Builder {
 
@@ -105,4 +119,9 @@ func (builder *Builder) CloseAll() *Builder {
 func (builder *Builder) String() string {
 	builder.CloseAll()
 	return builder.Builder.String()
+}
+
+// Reader returns the string as an io.Reader.
+func (builder *Builder) Reader() io.Reader {
+	return strings.NewReader(builder.String())
 }

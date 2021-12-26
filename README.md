@@ -24,7 +24,7 @@ b.String()
 
 ## Why Builder?
 
-Why not just use [Go Templates](https://golang.org/pkg/text/template/) instead?  Templates work great in many cases, but they can be cumbersome when building complex conditional logic.  Builder uses an efficient strings.Builder](https://pkg.go.dev/strings#Builder) to assemble the exact HTML you need, and nothing extra.
+Why not just use [Go Templates](https://golang.org/pkg/text/template/) instead?  Templates work great in many cases, but they can be cumbersome when building complex conditional logic directly in your code.  Builder uses an efficient [strings.Builder](https://pkg.go.dev/strings#Builder) to assemble the exact HTML you need, and nothing extra.
 
 
 ## Pull Requests Welcome

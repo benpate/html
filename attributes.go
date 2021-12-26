@@ -37,12 +37,12 @@ func (element *Element) Name(value string) *Element {
 	return element.Attr("name", value)
 }
 
-// Script adds a "data-script" attribute to the Element (hyperscript)
+// Script adds a "data-script" attribute to the Element (for https://hyperscript.org)
 func (element *Element) Script(value string) *Element {
 	return element.Attr("data-script", value)
 }
 
-// Script adds a "data-script" attribute to the Element (hyperscript)
+// Script adds a "style" attribute to the Element
 func (element *Element) Style(values ...string) *Element {
 	return element.Attr("style", strings.Join(values, "; "))
 }

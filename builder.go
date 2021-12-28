@@ -70,7 +70,7 @@ func (builder *Builder) SubTree() *Builder {
 
 	// If we're beginning a sub-tree, then guarantee that the most recent tag has at
 	// least been ended properly.
-	builder.last.EndBracket()
+	builder.EndBracket()
 
 	return &Builder{
 		Builder: builder.Builder,

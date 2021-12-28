@@ -2,7 +2,13 @@ package html
 
 import "strings"
 
-// Class adds a "class" attribute to the Element
+// Aria adds a "aria-*" attribute to the Element
+func (element *Element) Aria(name string, value string) *Element {
+	return element.Attr("aria-"+name, value)
+}
+
+// Class adds a "class" attribute to the Element.
+// Multiple class names can be passed, and are separated by spaces
 func (element *Element) Class(values ...string) *Element {
 	return element.Attr("class", strings.Join(values, " "))
 }
@@ -37,12 +43,18 @@ func (element *Element) Name(value string) *Element {
 	return element.Attr("name", value)
 }
 
+// Name adds a "role" attribute to the Element (for WAI-ARIA)
+func (element *Element) Role(value string) *Element {
+	return element.Attr("role", value)
+}
+
 // Script adds a "data-script" attribute to the Element (for https://hyperscript.org)
 func (element *Element) Script(value string) *Element {
 	return element.Attr("data-script", value)
 }
 
-// Script adds a "style" attribute to the Element
+// Stype adds a "style" attribute to the Element
+// Multiple style definitions can be passed, and are separated by semicolons.
 func (element *Element) Style(values ...string) *Element {
 	return element.Attr("style", strings.Join(values, "; "))
 }

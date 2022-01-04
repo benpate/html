@@ -59,6 +59,11 @@ func (element *Element) Style(values ...string) *Element {
 	return element.Attr("style", strings.Join(values, "; "))
 }
 
+// TabIndex adds a "tabIndex" attribute to the Element
+func (element *Element) TabIndex(value string) *Element {
+	return element.Attr("tabIndex", value)
+}
+
 // Type adds a "type" attribute to the Element
 func (element *Element) Type(value string) *Element {
 	return element.Attr("type", value)

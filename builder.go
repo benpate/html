@@ -62,6 +62,13 @@ func (builder *Builder) Container(name string) *Element {
 	return builder.Element(name, true)
 }
 
+// Space adds a single space character to the buffer
+func (builder *Builder) Space() *Builder {
+	builder.Grow(1)
+	builder.WriteString(" ")
+	return builder
+}
+
 // SubTree generates a new Builder that shares this Builder's string buffer.
 // This is useful when sending a Builder to another function, so that the
 // other function can maintain it's own stack of elements -- and potentially

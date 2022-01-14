@@ -51,6 +51,10 @@ func (b *Builder) Label(forID string) *Element {
 	return b.Container("label").For(forID)
 }
 
+func (b *Builder) Link(rel string, href string) *Element {
+	return b.Empty("link").Attr("rel", rel).Attr("href", href).Close()
+}
+
 func (b *Builder) OptGroup(label string) *Element {
 	return b.Container("optgroup").Label(label).EndBracket()
 }

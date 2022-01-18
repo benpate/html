@@ -1,14 +1,14 @@
 # html 🚧
 
-[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://pkg.go.dev/github.com/benpate/html)
-[![Go Report Card](https://goreportcard.com/badge/github.com/benpate/html?style=flat-square)](https://goreportcard.com/report/github.com/benpate/html)
-[![Build Status](http://img.shields.io/travis/benpate/html.svg?style=flat-square)](https://travis-ci.com/benpate/html)
+[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/benpate/html)
+[![Build Status](http://img.shields.io/travis/benpate/html.svg?style=flat-square)](https://travis-ci.org/benpate/html)
 [![Codecov](https://img.shields.io/codecov/c/github/benpate/html.svg?style=flat-square)](https://codecov.io/gh/benpate/html)
+[![Go Report Card](https://goreportcard.com/badge/github.com/benpate/html?style=flat-square)](https://goreportcard.com/report/github.com/benpate/html)
 ![Version](https://img.shields.io/github/v/release/benpate/html?include_prereleases&style=flat-square&color=brightgreen)
 
 ## Efficient HTML Tag Assembly
 
-This is a simple library for assembling HTML tags using Go.  
+This library builds a string buffer of HTML tags programmatically.
 
 ```go
 b := html.New()

@@ -1,10 +1,10 @@
 # html 🚧
 
-[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/benpate/html)
-[![Build Status](http://img.shields.io/travis/benpate/html.svg?style=flat-square)](https://travis-ci.org/benpate/html)
+[![GoDoc](https://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://pkg.go.dev/github.com/benpate/html)
+[![Build Status](https://img.shields.io/github/workflow/status/benpate/html/Go/master)](https://github.com/benpate/html/actions/workflows/go.yml)
 [![Codecov](https://img.shields.io/codecov/c/github/benpate/html.svg?style=flat-square)](https://codecov.io/gh/benpate/html)
 [![Go Report Card](https://goreportcard.com/badge/github.com/benpate/html?style=flat-square)](https://goreportcard.com/report/github.com/benpate/html)
-![Version](https://img.shields.io/github/v/release/benpate/html?include_prereleases&style=flat-square&color=brightgreen)
+[![Version](https://img.shields.io/github/v/release/benpate/html?include_prereleases&style=flat-square&color=brightgreen)](https://github.com/benpate/html/releases)
 
 ## Efficient HTML Tag Assembly
 

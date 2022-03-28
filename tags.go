@@ -39,8 +39,8 @@ func (b *Builder) H3() *Element {
 	return b.Container("h3")
 }
 
-func (b *Builder) I(class string) *Element {
-	return b.Container("i").Class(class)
+func (b *Builder) I(classes ...string) *Element {
+	return b.Container("i").Class(classes...)
 }
 
 func (b *Builder) Input(t string, name string) *Element {

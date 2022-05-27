@@ -67,6 +67,10 @@ func (b *Builder) Script() *Element {
 	return b.Container("script")
 }
 
+func (b *Builder) Stylesheet(url string) *Element {
+	return b.Empty("link").Rel("stylesheet").Href(url)
+}
+
 func (b *Builder) Select(name string) *Element {
 	return b.Container("select").Name(name)
 }

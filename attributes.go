@@ -23,6 +23,11 @@ func (element *Element) Data(name string, value string) *Element {
 	return element.Attr("data-"+name, value)
 }
 
+// Href adds an "href" attribute to the Element
+func (element *Element) Href(url string) *Element {
+	return element.Attr("href", url)
+}
+
 // ID adds an "id" attribute to the Element
 func (element *Element) ID(value string) *Element {
 	return element.Attr("id", value)
@@ -43,6 +48,11 @@ func (element *Element) Name(value string) *Element {
 	return element.Attr("name", value)
 }
 
+// Name adds a "rel" (relationship) attribute to the Element (valid values listed at https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel)
+func (element *Element) Rel(value string) *Element {
+	return element.Attr("rel", value)
+}
+
 // Name adds a "role" attribute to the Element (for WAI-ARIA)
 func (element *Element) Role(value string) *Element {
 	return element.Attr("role", value)
@@ -51,6 +61,11 @@ func (element *Element) Role(value string) *Element {
 // Script adds a "data-script" attribute to the Element (for https://hyperscript.org)
 func (element *Element) Script(value string) *Element {
 	return element.Attr("data-script", value)
+}
+
+// Src adds a "src" attribute to the Element
+func (element *Element) Src(value string) *Element {
+	return element.Attr("src", value)
 }
 
 // Stype adds a "style" attribute to the Element

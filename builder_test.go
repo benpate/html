@@ -16,3 +16,14 @@ func TestAutoEndBracket(t *testing.T) {
 	require.NotNil(t, b.last)
 	assert.Nil(t, b.last.parent)
 }
+
+func TestRead(t *testing.T) {
+
+	b := New()
+
+	b.H1().EndBracket()
+	require.Equal(t, "<h1>", b.ReadString())
+
+	b.WriteString("hello world")
+	require.Equal(t, "hello world</h1>", b.String())
+}

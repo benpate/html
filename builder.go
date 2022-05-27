@@ -120,12 +120,39 @@ func (builder *Builder) CloseAll() *Builder {
 	return builder
 }
 
+// ReadString reads the existing contents of the buffer but DOES NOT
+// close any existing tags.  This is useful for reading the header
+// of an HTML document before calling a subroutine that will fill in
+// its body.
+func (builder *Builder) ReadString() string {
+
+	// if there was any extra space remaining in the old buffer,
+	// then we'll use that in the new buffer, too
+	extraSpace := builder.Builder.Cap() - builder.Builder.Len()
+
+	result := builder.Builder.String()
+	builder.Builder.Reset()
+
+	if extraSpace > 0 {
+		builder.Builder.Grow(extraSpace)
+	}
+
+	// Return the contents of the original buffer so far.
+	return result
+}
+
 // String returns the assembled HTML as a string.  It overrides
 // the default behavior of the strings.Builder by also calling
 // CloseAll() on all unclosed tags in the stack before generating HTML.
 func (builder *Builder) String() string {
 	builder.CloseAll()
 	return builder.Builder.String()
+}
+
+// Bytes returns the assembled HTML as a slice of bytes.
+func (builder *Builder) Bytes() []byte {
+	builder.CloseAll()
+	return []byte(builder.Builder.String())
 }
 
 // Reader returns the string as an io.Reader.

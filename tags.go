@@ -87,6 +87,10 @@ func (b *Builder) Textarea(name string) *Element {
 	return b.Container("textarea").Name(name)
 }
 
+func (b *Builder) TBody() *Element {
+	return b.Container("tbody")
+}
+
 func (b *Builder) TD() *Element {
 	return b.Container("td")
 }

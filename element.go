@@ -86,6 +86,8 @@ func (element *Element) EndBracket() *Element {
 // 1) closes the beginning element (if needed)
 // 2) appends innerHTML (if provided)
 // 3) writes an ending element to the builder (ie. </element> )
+// InnerHTML DOES NOT escape its content, so it is not safe to use
+// with user-generated content.
 func (element *Element) InnerHTML(innerHTML string) *Element {
 
 	// If the element has already been closed, then we cannot add anything more.
@@ -108,6 +110,13 @@ func (element *Element) InnerHTML(innerHTML string) *Element {
 
 	// Write the remaining end element
 	return element.Close()
+}
+
+// InnerText works similarly to the InnerHTML method.  In addition,
+// it HTML escapes its content so that user-generated-content can
+// be inserted into the output safely.
+func (element *Element) InnerText(text string) *Element {
+	return element.InnerHTML(html.EscapeString(text))
 }
 
 // Close writes the necessary closing tag for this element and marks it closed

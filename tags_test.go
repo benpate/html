@@ -42,3 +42,10 @@ func TestInput(t *testing.T) {
 
 	require.Equal(t, `<input type="text" name="FullName" value="John Connor">`, b.String())
 }
+
+func TestOption(t *testing.T) {
+	b := New()
+	b.Option("John Connor", "1")
+
+	require.Equal(t, `<option value="1">John Connor</option>`, b.String())
+}

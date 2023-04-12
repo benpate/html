@@ -59,8 +59,8 @@ func (b *Builder) OptGroup(label string) *Element {
 	return b.Container("optgroup").Label(label).EndBracket()
 }
 
-func (b *Builder) Option(name string, value string) *Element {
-	return b.Container("option").Name(name).InnerHTML(value).Close()
+func (b *Builder) Option(label string, value string) *Element {
+	return b.Container("option").Value(value).InnerText(label).Close()
 }
 
 func (b *Builder) Script() *Element {

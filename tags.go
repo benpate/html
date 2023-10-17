@@ -8,6 +8,10 @@ func (b *Builder) B(class string) *Element {
 	return b.Container("b").Class(class)
 }
 
+func (b *Builder) Body() *Element {
+	return b.Container("body")
+}
+
 func (b *Builder) BR() *Element {
 	return b.Empty("br")
 }
@@ -37,6 +41,14 @@ func (b *Builder) H2() *Element {
 }
 func (b *Builder) H3() *Element {
 	return b.Container("h3")
+}
+
+func (b *Builder) Head() *Element {
+	return b.Container("head")
+}
+
+func (b *Builder) HTML() *Element {
+	return b.Container("html")
 }
 
 func (b *Builder) I(classes ...string) *Element {
@@ -79,12 +91,16 @@ func (b *Builder) Span() *Element {
 	return b.Container("span")
 }
 
-func (b *Builder) Table() *Element {
-	return b.Container("table")
-}
-
 func (b *Builder) Textarea(name string) *Element {
 	return b.Container("textarea").Name(name)
+}
+
+func (b *Builder) Title(value string) *Element {
+	return b.Container("title").InnerText(value).Close()
+}
+
+func (b *Builder) Table() *Element {
+	return b.Container("table")
 }
 
 func (b *Builder) TBody() *Element {

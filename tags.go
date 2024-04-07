@@ -4,6 +4,10 @@ func (b *Builder) A(href string) *Element {
 	return b.Container("a").Attr("href", href)
 }
 
+func (b *Builder) Audio() *Element {
+	return b.Container("audio")
+}
+
 func (b *Builder) B(class string) *Element {
 	return b.Container("b").Class(class)
 }
@@ -55,6 +59,10 @@ func (b *Builder) I(classes ...string) *Element {
 	return b.Container("i").Class(classes...)
 }
 
+func (b *Builder) Img(src string) *Element {
+	return b.Container("img").Src(src)
+}
+
 func (b *Builder) Input(t string, name string) *Element {
 	return b.Empty("input").Type(t).Name(name)
 }
@@ -89,6 +97,10 @@ func (b *Builder) Select(name string) *Element {
 
 func (b *Builder) Span() *Element {
 	return b.Container("span")
+}
+
+func (b *Builder) Source() *Element {
+	return b.Container("source")
 }
 
 func (b *Builder) Textarea(name string) *Element {

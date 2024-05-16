@@ -80,7 +80,11 @@ func (b *Builder) OptGroup(label string) *Element {
 }
 
 func (b *Builder) Option(label string, value string) *Element {
-	return b.Container("option").Value(value).InnerText(label).Close()
+	return b.Container("option").ForceAttr("value", value).InnerText(label).Close()
+}
+
+func (b *Builder) OptionSelected(label string, value string) *Element {
+	return b.Container("option").ForceAttr("value", value).Attr("selected", "true").InnerText(label).Close()
 }
 
 func (b *Builder) Script() *Element {

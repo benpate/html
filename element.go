@@ -36,29 +36,41 @@ func (element *Element) Start() *Element {
 // Attr writes the attribute into the string builder.  It converts
 // the value (second parameter) into a string, and then uses html.EscapeString
 // to escape the attribute value.  Attribute names ARE NOT escaped.
+// Empty values are not written to the builder.
 func (element *Element) Attr(name string, value string) *Element {
+
+	// Skip empty values
+	if value == "" {
+		return element
+	}
+
+	// Otherwise, write the attribute to the builder
+	return element.ForceAttr(name, value)
+}
+
+// ForceAttr writes the attribute into the string builder.  It converts
+// the value (second parameter) into a string, and then uses html.EscapeString
+// to escape the attribute value.  Attribute names ARE NOT escaped.
+// Empty values ARE written to the builder
+func (element *Element) ForceAttr(name string, value string) *Element {
 
 	// If the element already has an end bracket, then we can't add any more attributes.
 	if element.endBracket {
 		return element
 	}
 
-	// this *should* already be a string, but just in case
-	if value != "" {
+	// escape the value
+	value = html.EscapeString(value)
 
-		// escape the value
-		value = html.EscapeString(value)
+	// length of: space + name + quote + escaped value + quote
+	element.builder.Grow(len(name) + len(value) + 4)
 
-		// length of: space + name + quote + escaped value + quote
-		element.builder.Grow(len(name) + len(value) + 4)
-
-		// write values to the builder
-		element.builder.WriteRune(' ')
-		element.builder.WriteString(name)
-		element.builder.WriteString(`="`)
-		element.builder.WriteString(value)
-		element.builder.WriteRune('"')
-	}
+	// write values to the builder
+	element.builder.WriteRune(' ')
+	element.builder.WriteString(name)
+	element.builder.WriteString(`="`)
+	element.builder.WriteString(value)
+	element.builder.WriteRune('"')
 
 	return element
 }

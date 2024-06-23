@@ -32,6 +32,14 @@ func (b *Builder) Div() *Element {
 	return b.Container("div")
 }
 
+func (b *Builder) Figure() *Element {
+	return b.Container("figure")
+}
+
+func (b *Builder) FigCaption(innerHTML string) *Element {
+	return b.Container("figcaption").InnerHTML(innerHTML).Close()
+}
+
 func (b *Builder) Form(method string, action string) *Element {
 	return b.Container("form").Attr("method", method).Attr("action", action)
 }
@@ -85,6 +93,10 @@ func (b *Builder) Option(label string, value string) *Element {
 
 func (b *Builder) OptionSelected(label string, value string) *Element {
 	return b.Container("option").ForceAttr("value", value).Attr("selected", "true").InnerText(label).Close()
+}
+
+func (b *Builder) Picture() *Element {
+	return b.Container("picture")
 }
 
 func (b *Builder) Script() *Element {

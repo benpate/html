@@ -74,7 +74,7 @@ func (element *Element) Src(value string) *Element {
 }
 
 // Srcset adds a "srcset" attribute to the Element
-func (element *Element) Srcset(value string) *Element {
+func (element *Element) SrcSet(value string) *Element {
 	return element.Attr("srcset", value)
 }
 

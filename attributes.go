@@ -43,17 +43,22 @@ func (element *Element) List(value string) *Element {
 	return element.Attr("list", value)
 }
 
+// Media adds a "name" attribute to the Element
+func (element *Element) Media(value string) *Element {
+	return element.Attr("media", value)
+}
+
 // Name adds a "name" attribute to the Element
 func (element *Element) Name(value string) *Element {
 	return element.Attr("name", value)
 }
 
-// Name adds a "rel" (relationship) attribute to the Element (valid values listed at https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel)
+// Rel adds a "rel" (relationship) attribute to the Element (valid values listed at https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel)
 func (element *Element) Rel(value string) *Element {
 	return element.Attr("rel", value)
 }
 
-// Name adds a "role" attribute to the Element (for WAI-ARIA)
+// Role adds a "role" attribute to the Element (for WAI-ARIA)
 func (element *Element) Role(value string) *Element {
 	return element.Attr("role", value)
 }
@@ -66,6 +71,11 @@ func (element *Element) Script(value string) *Element {
 // Src adds a "src" attribute to the Element
 func (element *Element) Src(value string) *Element {
 	return element.Attr("src", value)
+}
+
+// Srcset adds a "srcset" attribute to the Element
+func (element *Element) Srcset(value string) *Element {
+	return element.Attr("srcset", value)
 }
 
 // Stype adds a "style" attribute to the Element

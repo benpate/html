@@ -116,7 +116,7 @@ func (b *Builder) Span() *Element {
 }
 
 func (b *Builder) Source() *Element {
-	return b.Empty("source")
+	return b.Container("source")
 }
 
 func (b *Builder) Textarea(name string) *Element {

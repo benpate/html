@@ -8,7 +8,7 @@
 
 ## Efficient HTML Tag Assembly
 
-This library builds a string buffer of HTML tags programmatically.
+This library provides functions for generating a string HTML tags.
 
 ```go
 b := html.New()

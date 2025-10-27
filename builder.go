@@ -130,11 +130,11 @@ func (builder *Builder) ReadString() string {
 	// then we'll use that in the new buffer, too
 	extraSpace := builder.Builder.Cap() - builder.Builder.Len()
 
-	result := builder.Builder.String()
-	builder.Builder.Reset()
+	result := builder.String()
+	builder.Reset()
 
 	if extraSpace > 0 {
-		builder.Builder.Grow(extraSpace)
+		builder.Grow(extraSpace)
 	}
 
 	// Return the contents of the original buffer so far.

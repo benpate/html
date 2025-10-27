@@ -64,8 +64,8 @@ func (element *Element) Role(value string) *Element {
 }
 
 // Script adds a "data-script" attribute to the Element (for https://hyperscript.org)
-func (element *Element) Script(value string) *Element {
-	return element.Attr("data-script", value)
+func (element *Element) Script(value ...string) *Element {
+	return element.Attr("data-script", strings.Join(value, " "))
 }
 
 // Src adds a "src" attribute to the Element

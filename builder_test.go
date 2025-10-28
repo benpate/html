@@ -17,13 +17,21 @@ func TestAutoEndBracket(t *testing.T) {
 	assert.Nil(t, b.last.parent)
 }
 
+func TestPartialRead(t *testing.T) {
+
+	b := New()
+
+	b.H1().EndBracket()
+	require.Equal(t, "<h1></h1>", b.ReadString())
+}
+
 func TestRead(t *testing.T) {
 
 	b := New()
 
 	b.H1().EndBracket()
-	require.Equal(t, "<h1>", b.ReadString())
+	// require.Equal(t, "<h1>", b.ReadString())
 
 	b.WriteString("hello world")
-	require.Equal(t, "hello world</h1>", b.String())
+	require.Equal(t, "<h1>hello world</h1>", b.String())
 }

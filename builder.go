@@ -128,7 +128,7 @@ func (builder *Builder) ReadString() string {
 
 	// if there was any extra space remaining in the old buffer,
 	// then we'll use that in the new buffer, too
-	extraSpace := builder.Builder.Cap() - builder.Builder.Len()
+	extraSpace := builder.Cap() - builder.Builder.Len()
 
 	result := builder.String()
 	builder.Reset()

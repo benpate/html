@@ -94,7 +94,9 @@ func (element *Element) Type(value string) *Element {
 	return element.Attr("type", value)
 }
 
-// Value adds a "value" attribute to the Element
+// Value adds a "value" attribute to the Element.
+// NOTE: This attributed is ALWAYS written to the HTML tag,
+// even if it is empty.
 func (element *Element) Value(value string) *Element {
-	return element.Attr("value", value)
+	return element.ForceAttr("value", value)
 }

@@ -126,14 +126,12 @@ func (builder *Builder) CloseAll() *Builder {
 // its body.
 func (builder *Builder) ReadString() string {
 
-	// if there was any extra space remaining in the old buffer,
-	// then we'll use that in the new buffer, too
-	extraSpace := builder.Cap() - builder.Len()
-
 	result := builder.String()
 	builder.Reset()
 
-	if extraSpace > 0 {
+	// if there was any extra space remaining in the old buffer,
+	// then we'll use that in the new buffer, too
+	if extraSpace := builder.Cap() - builder.Len(); extraSpace > 0 {
 		builder.Grow(extraSpace)
 	}
 

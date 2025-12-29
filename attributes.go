@@ -73,12 +73,12 @@ func (element *Element) Src(value string) *Element {
 	return element.Attr("src", value)
 }
 
-// Srcset adds a "srcset" attribute to the Element
+// SrcSet adds a "srcset" attribute to the Element
 func (element *Element) SrcSet(value string) *Element {
 	return element.Attr("srcset", value)
 }
 
-// Stype adds a "style" attribute to the Element
+// Style adds a "style" attribute to the Element
 // Multiple style definitions can be passed, and are separated by semicolons.
 func (element *Element) Style(values ...string) *Element {
 	return element.Attr("style", strings.Join(values, "; "))

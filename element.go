@@ -84,13 +84,17 @@ func (element *Element) EndBracket() *Element {
 		return element
 	}
 
-	// If this element is not a container, then this closes it permanently
-	if !element.container {
-		element.closed = true
-	}
-
 	element.endBracket = true
 	element.builder.WriteRune('>')
+
+	// A non-container element has no closing tag, so its end bracket closes it
+	// permanently. Pop it off the stack now; otherwise CloseAll would spin on an
+	// element that is closed but never removed.
+	if !element.container {
+		element.closed = true
+		element.builder.last = element.parent
+	}
+
 	return element
 }
 

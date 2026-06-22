@@ -6,7 +6,7 @@ func (b *Builder) A(href string) *Element {
 	return b.Container("a").Attr("href", href)
 }
 
-// Audio creates a new abbreviation element
+// Audio creates a new audio element
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
 func (b *Builder) Audio() *Element {
 	return b.Container("audio")
@@ -126,7 +126,7 @@ func (b *Builder) Link(rel string, href string) *Element {
 	return b.Empty("link").Attr("rel", rel).Attr("href", href).Close()
 }
 
-// OptGroup creates a new meta element
+// OptGroup creates a new optgroup element
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
 func (b *Builder) OptGroup(label string) *Element {
 	return b.Container("optgroup").Label(label).EndBracket()

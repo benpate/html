@@ -71,7 +71,7 @@ func (builder *Builder) Space() *Builder {
 
 // SubTree generates a new Builder that shares this Builder's string buffer.
 // This is useful when sending a Builder to another function, so that the
-// other function can maintain it's own stack of elements -- and potentially
+// other function can maintain its own stack of elements -- and potentially
 // call .CloseAll() -- without affecting this current builder.
 func (builder *Builder) SubTree() *Builder {
 
@@ -110,7 +110,7 @@ func (builder *Builder) Close() *Builder {
 	return builder
 }
 
-// CloseAll calls .Cload() until the stack is empty.
+// CloseAll calls .Close() until the stack is empty.
 func (builder *Builder) CloseAll() *Builder {
 
 	for builder.last != nil {

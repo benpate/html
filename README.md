@@ -28,4 +28,4 @@ Why not just use [Go Templates](https://golang.org/pkg/text/template/) instead? 
 
 ## Pull Requests Welcome
 
-This library is growing rapidly, as the requirements of its downstram projects continue to evolve.  How can it help you build your next masterpiece?  Add your voice, because we're all in this together! 🚧
+This library is growing rapidly, as the requirements of its downstream projects continue to evolve.  How can it help you build your next masterpiece?  Add your voice, because we're all in this together! 🚧

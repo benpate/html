@@ -43,7 +43,7 @@ func (element *Element) List(value string) *Element {
 	return element.Attr("list", value)
 }
 
-// Media adds a "name" attribute to the Element
+// Media adds a "media" attribute to the Element
 func (element *Element) Media(value string) *Element {
 	return element.Attr("media", value)
 }

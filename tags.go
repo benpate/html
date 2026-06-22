@@ -105,7 +105,7 @@ func (b *Builder) I(classes ...string) *Element {
 // Img creates a new image element
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
 func (b *Builder) Img(src string) *Element {
-	return b.Container("img").Src(src)
+	return b.Empty("img").Src(src)
 }
 
 // Input creates a new input element
@@ -177,7 +177,7 @@ func (b *Builder) Span() *Element {
 // Source creates a new source element
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source
 func (b *Builder) Source() *Element {
-	return b.Container("source")
+	return b.Empty("source")
 }
 
 // Textarea creates a new textarea element

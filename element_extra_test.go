@@ -68,6 +68,19 @@ func TestElement_NonContainer_NoClosingTag(t *testing.T) {
 	require.Equal(t, `<br>`, b.String())
 }
 
+func TestElement_NonContainer_EndBracketPopsStack(t *testing.T) {
+
+	// Regression: EndBracket on a non-container element must pop it off the stack.
+	// Previously it marked the element closed but left it on the stack, so the
+	// following String()/CloseAll() spun forever on an element it could not pop.
+	b := New()
+	b.Empty("br").EndBracket()
+
+	require.NotPanics(t, func() {
+		require.Equal(t, `<br>`, b.String())
+	})
+}
+
 func TestElement_InnerText_Escapes(t *testing.T) {
 
 	b := New()

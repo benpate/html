@@ -42,6 +42,19 @@ func TestElement_InnerHTML_OnClosedElement(t *testing.T) {
 	require.Equal(t, `<span></span>`, b.String())
 }
 
+func TestElement_Close_Idempotent(t *testing.T) {
+
+	// Closing an already-closed element is a no-op: it must not write a second
+	// closing tag, regardless of how many times it is called.
+	b := New()
+	e := b.Span()
+	e.Close()
+	e.Close()
+	e.Close()
+
+	require.Equal(t, `<span></span>`, b.String())
+}
+
 func TestElement_InnerHTML_Empty(t *testing.T) {
 
 	// InnerHTML with empty content still closes the element

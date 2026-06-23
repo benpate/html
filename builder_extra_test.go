@@ -72,19 +72,51 @@ func TestBuilder_CloseAll(t *testing.T) {
 
 func TestBuilder_ReadString(t *testing.T) {
 
-	// ReadString returns the current buffer WITHOUT closing open tags,
-	// and resets the buffer for further writing.
+	// ReadString returns the current buffer WITHOUT closing open tags, leaving the
+	// element stack intact so a later subroutine can fill in the body.
 	b := New()
 	b.HTML()
 	b.Head().InnerHTML("<title>x</title>")
 
+	// The header is read out exactly as written, with <html> still OPEN: it must
+	// NOT contain a closing </html>, because ReadString does not close tags.
 	header := b.ReadString()
-	require.Contains(t, header, "<html>")
-	require.Contains(t, header, "<title>x</title>")
+	require.Equal(t, "<html><head><title>x</title></head>", header)
+	require.NotContains(t, header, "</html>")
 
-	// After ReadString, the buffer is empty and we can keep building
+	// Because <html> is still open on the stack, the body nests inside it, and the
+	// final String() closes <html> last -- producing well-formed, nested markup.
 	b.Body()
-	rest := b.String()
-	require.Contains(t, rest, "<body>")
-	require.NotContains(t, rest, "<html>") // already read out
+	require.Equal(t, "<body></body></html>", b.String())
+}
+
+func TestBuilder_ReadString_MidTag(t *testing.T) {
+
+	// Edge case: a freshly opened element has written "<div" but not yet its ">"
+	// (the bracket is deferred until an attribute, child, or close). ReadString
+	// reads the raw buffer as-is, so it returns the half-written tag.
+	b := New()
+	b.Div() // writes "<div", no ">" yet
+
+	require.Equal(t, "<div", b.ReadString())
+
+	// The element is still open, so EndBracket finishes the tag in the next chunk.
+	b.EndBracket()
+	require.Equal(t, "></div>", b.String())
+}
+
+func TestBuilder_ReadString_PreservesStackForNesting(t *testing.T) {
+
+	// Regression: ReadString previously called the overridden String(), which ran
+	// CloseAll() and emptied the stack -- so subsequent content was appended after
+	// the closed tags instead of nested inside them.
+	b := New()
+	b.Div().EndBracket() // open a container and finish its tag, but leave it open
+
+	read := b.ReadString()
+	require.Equal(t, "<div>", read)
+
+	// The div is still open, so the span nests inside it.
+	b.Span().InnerText("inner")
+	require.Equal(t, `<span>inner</span></div>`, b.String())
 }

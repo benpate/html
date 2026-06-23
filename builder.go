@@ -126,16 +126,17 @@ func (builder *Builder) CloseAll() *Builder {
 // its body.
 func (builder *Builder) ReadString() string {
 
-	result := builder.String()
+	// Read the raw buffer via the embedded strings.Builder. The overridden
+	// Builder.String would call CloseAll, which closes open tags and empties the
+	// element stack -- the opposite of this method's contract.
+	result := builder.Builder.String()
+
+	// Capture the buffer's capacity before Reset clears it, so the freed space can
+	// be reused for the content written after this read.
+	capacity := builder.Cap()
 	builder.Reset()
+	builder.Grow(capacity)
 
-	// if there was any extra space remaining in the old buffer,
-	// then we'll use that in the new buffer, too
-	if extraSpace := builder.Cap() - builder.Len(); extraSpace > 0 {
-		builder.Grow(extraSpace)
-	}
-
-	// Return the contents of the original buffer so far.
 	return result
 }
 

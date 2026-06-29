@@ -1,6 +1,6 @@
 # html 🚧
 
-[![GoDoc](https://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://pkg.go.dev/github.com/benpate/html)
+[![Go Reference](https://pkg.go.dev/badge/github.com/benpate/html.svg)](https://pkg.go.dev/github.com/benpate/html)
 [![Version](https://img.shields.io/github/v/release/benpate/html?include_prereleases&style=flat-square&color=brightgreen)](https://github.com/benpate/html/releases)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/benpate/html/go.yml?style=flat-square)](https://github.com/benpate/html/actions/workflows/go.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/benpate/html?style=flat-square)](https://goreportcard.com/report/github.com/benpate/html)
@@ -8,7 +8,7 @@
 
 ## Efficient HTML Tag Assembly
 
-This library provides functions for generating a string HTML tags.
+This library provides functions for generating a string of HTML tags.
 
 ```go
 b := html.New()
@@ -24,8 +24,8 @@ b.String()
 
 ## Why Builder?
 
-Why not just use [Go Templates](https://golang.org/pkg/text/template/) instead?  Templates work great in many cases, but they can be cumbersome when building complex conditional logic directly in your code.  Builder uses an efficient [strings.Builder](https://pkg.go.dev/strings#Builder) to assemble the exact HTML you need, and nothing extra.
+Why not just use [Go Templates](https://golang.org/pkg/text/template/) instead? Templates work great in many cases, but they can be cumbersome when building complex conditional logic directly in your code. Builder uses an efficient [strings.Builder](https://pkg.go.dev/strings#Builder) to assemble the exact HTML you need, and nothing extra.
 
 ## Pull Requests Welcome
 
-This library is growing rapidly, as the requirements of its downstream projects continue to evolve.  How can it help you build your next masterpiece?  Add your voice, because we're all in this together! 🚧
+This library is growing rapidly, as the requirements of its downstream projects continue to evolve. How can it help you build your next masterpiece? Add your voice, because we're all in this together! 🚧

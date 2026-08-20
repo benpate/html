@@ -87,6 +87,7 @@ func (builder *Builder) SubTree() *Builder {
 // EndBracket adds an end bracket to the last tag on the stack
 func (builder *Builder) EndBracket() *Builder {
 
+	// RULE: An empty stack has no tag to end.
 	if builder.last == nil {
 		return builder
 	}
@@ -100,6 +101,7 @@ func (builder *Builder) EndBracket() *Builder {
 // Close completes the last tag on the stack, then pops it off of the stack
 func (builder *Builder) Close() *Builder {
 
+	// RULE: An empty stack has no tag to close.
 	if builder.last == nil {
 		return builder
 	}
@@ -117,6 +119,7 @@ func (builder *Builder) CloseAll() *Builder {
 		builder.Close()
 	}
 
+	// Everybody out of the pool
 	return builder
 }
 

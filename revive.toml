@@ -1,0 +1,11 @@
+# revive configuration for github.com/benpate/html
+#
+# Only the default rule set is changed, and only in one respect: var-naming's
+# package-name check is skipped. The package is named "html" to match its module
+# path (github.com/benpate/html) and its repository, so the collision with the
+# standard library's "html" cannot be resolved without a breaking rename. Every
+# other var-naming check (variables, constants, receivers, underscores, initialisms)
+# stays on.
+
+[rule.var-naming]
+  arguments = [[], [], [{ skipPackageNameChecks = true }]]

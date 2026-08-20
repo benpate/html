@@ -20,9 +20,9 @@ func (element *Element) Start() *Element {
 	var growSize int
 
 	if element.container {
-		growSize = (2*len(element.name) + 2) + 1 // < + name + > + </ + name + >
+		growSize = 2*len(element.name) + 5 // "<" + name + ">" + "</" + name + ">"
 	} else {
-		growSize = len(element.name) + 2 // < + name + >
+		growSize = len(element.name) + 2 // "<" + name + ">"
 	}
 
 	// Grow the buffer and write the new tag name
@@ -35,11 +35,14 @@ func (element *Element) Start() *Element {
 
 // Attr writes the attribute into the string builder.  It converts
 // the value (second parameter) into a string, and then uses html.EscapeString
-// to escape the attribute value.  Attribute names ARE NOT escaped.
-// Empty values are not written to the builder.
+// to escape the attribute value.  Empty values are not written to the builder.
+//
+// The NAME is written into the tag verbatim, without escaping, so it must never
+// come from user input: a name containing a quote closes the attribute, and one
+// containing ">" closes the tag, letting the rest be parsed as markup.
 func (element *Element) Attr(name string, value string) *Element {
 
-	// Skip empty values
+	// RULE: An empty value writes no attribute at all.
 	if value == "" {
 		return element
 	}
@@ -50,11 +53,15 @@ func (element *Element) Attr(name string, value string) *Element {
 
 // ForceAttr writes the attribute into the string builder.  It converts
 // the value (second parameter) into a string, and then uses html.EscapeString
-// to escape the attribute value.  Attribute names ARE NOT escaped.
-// Empty values ARE written to the builder
+// to escape the attribute value.  Empty values ARE written to the builder.
+//
+// As with Attr, the NAME is written verbatim and must never come from user
+// input. Values are escaped; names are the caller's responsibility.
+// #nosec G104 -- strings.Builder's Write methods always return a nil error
 func (element *Element) ForceAttr(name string, value string) *Element {
 
-	// If the element already has an end bracket, then we can't add any more attributes.
+	// RULE: Once the end bracket is written there is nowhere left to put an
+	// attribute, so the call is silently ignored.
 	if element.endBracket {
 		return element
 	}
@@ -79,7 +86,7 @@ func (element *Element) ForceAttr(name string, value string) *Element {
 // It uses an internal variable to prevent duplicate calls
 func (element *Element) EndBracket() *Element {
 
-	// If we already have an end bracket, then skip
+	// RULE: The end bracket is written exactly once.
 	if element.endBracket {
 		return element
 	}
@@ -106,7 +113,7 @@ func (element *Element) EndBracket() *Element {
 // with user-generated content.
 func (element *Element) InnerHTML(innerHTML string) *Element {
 
-	// If the element has already been closed, then we cannot add anything more.
+	// RULE: A closed element cannot take any more content.
 	if element.closed {
 		return element
 	}
@@ -138,7 +145,7 @@ func (element *Element) InnerText(text string) *Element {
 // Close writes the necessary closing tag for this element and marks it closed
 func (element *Element) Close() *Element {
 
-	// If it's already been closed, then nothing else is required.
+	// RULE: Closing twice writes a second end tag, so do it once.
 	if element.closed {
 		return element
 	}
@@ -157,8 +164,9 @@ func (element *Element) Close() *Element {
 	// Mark the element closed
 	element.closed = true
 
-	// Update the builder's stack.
+	// Pop this element off the builder's stack.
 	element.builder.last = element.parent
 
+	// And so it is finished
 	return element
 }

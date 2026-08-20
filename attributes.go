@@ -2,7 +2,10 @@ package html
 
 import "strings"
 
-// Aria adds a "aria-*" attribute to the Element
+// Aria adds a "aria-*" attribute to the Element.
+//
+// The name becomes part of the attribute name, which is NOT escaped, so it must
+// never come from user input. See Element.Attr.
 func (element *Element) Aria(name string, value string) *Element {
 	return element.Attr("aria-"+name, value)
 }
@@ -18,7 +21,10 @@ func (element *Element) For(value string) *Element {
 	return element.Attr("for", value)
 }
 
-// Data adds a "data-" attribute to the Element
+// Data adds a "data-" attribute to the Element.
+//
+// The name becomes part of the attribute name, which is NOT escaped, so it must
+// never come from user input. See Element.Attr.
 func (element *Element) Data(name string, value string) *Element {
 	return element.Attr("data-"+name, value)
 }
